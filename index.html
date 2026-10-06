@@ -1,23 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Rectifier Simulator</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Light/Dark Mode Toggle</title>
 <style>
-  * { box-sizing: border-box; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
 
   body {
-    margin: 0;
-    min-height: 100vh;                  /* fill the whole screen */
-    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-    background: #0a1929;                /* dark navy background */
-    color: #e2e8f0;                     /* light text color */
-    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    color: #222;
+    min-height: 100vh;
+    padding: 40px;
+  }
+
+  body.dark-mode {
+    background-color: #121212;
+    color: #f1f1f1;
+  }
+
+  /* Toggle button in top right corner */
+  #modeBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: bold;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    background-color: #222;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  #modeBtn:hover {
+    transform: scale(1.05);
+  }
+
+  body.dark-mode #modeBtn {
+    background-color: #f1f1f1;
+    color: #121212;
+  }
+
+  .content {
+    max-width: 700px;
+    margin: 80px auto 0;
+    text-align: center;
+  }
+
+  h1 {
+    margin-bottom: 20px;
+  }
+
+  p {
+    line-height: 1.6;
+    font-size: 17px;
   }
 </style>
 </head>
 <body>
-  <!-- nothing yet -->
+
+  <!-- Toggle button -->
+  <button id="modeBtn" onclick="toggleMode()">Mode</button>
+
+  <div class="content">
+    <h1>Light / Dark Mode Demo</h1>
+    <p>
+      Click the <strong>Mode</strong> button in the top right corner to switch 
+      between light and dark backgrounds. The page will smoothly transition 
+      between themes.
+    </p>
+  </div>
+
+  <script>
+    const body = document.body;
+    const btn = document.getElementById('modeBtn');
+
+    // Load saved preference on page load
+    if (localStorage.getItem('theme') === 'dark') {
+      body.classList.add('dark-mode');
+      btn.textContent = 'Mode'; // Keep button name as "Mode"
+    }
+
+    function toggleMode() {
+      body.classList.toggle('dark-mode');
+
+      // Save preference
+      if (body.classList.contains('dark-mode')) {
+        localStorage.setItem('theme', 'dark');
+      } else {
+        localStorage.setItem('theme', 'light');
+      }
+    }
+  </script>
+
 </body>
 </html>
