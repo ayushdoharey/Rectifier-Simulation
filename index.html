@@ -21,8 +21,8 @@
   }
 
   body.dark-mode {
-    background-color: ##008b8b;
-    color: ##008b8b;
+    background-color: #008b8b;   /* dark cyan */
+    color: #e0ffff;              /* light cyan text for readability */
   }
 
   /* Toggle button in top right corner */
@@ -73,7 +73,11 @@
   <button id="modeBtn" onclick="toggleMode()">Mode</button>
 
   <div class="content">
-    
+    <h1>Light / Dark Mode Demo</h1>
+    <p>
+      Click the <strong>Mode</strong> button in the top right corner to switch
+      between light and dark backgrounds.
+    </p>
   </div>
 
   <script>
@@ -83,7 +87,6 @@
     // Load saved preference on page load
     if (localStorage.getItem('theme') === 'dark') {
       body.classList.add('dark-mode');
-      btn.textContent = 'Mode'; // Keep button name as "Mode"
     }
 
     function toggleMode() {
