@@ -1,0 +1,6 @@
+{
+  "name": "RectiSim: Power Electronics Rectifier & Thyristor Lab",
+  "description": "Interactive power electronics lab simulating half-bridge and full-bridge rectifiers (controlled, semi-controlled, uncontrolled) with live current flow particles, real-time waveform oscilloscopes, and exact mathematical analysis.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
